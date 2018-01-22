@@ -1,6 +1,9 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
 
-[node name="TrackEditor" type="Control" index="0"]
+[ext_resource path="res://addons/Track Creator/track_editor.gd" type="Script" id=1]
+[ext_resource path="res://addons/Track Creator/EditCurrentTrack.gd" type="Script" id=2]
+
+[node name="Track Editor" type="Control"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -12,14 +15,16 @@ margin_right = -2.0
 margin_bottom = -2.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = ExtResource( 1 )
 _sections_unfolded = [ "Margin" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ButtonPanel" type="Panel" parent="." index="0"]
+[node name="TrackAdder" type="Panel" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -30,13 +35,14 @@ margin_bottom = 126.0
 rect_min_size = Vector2( 100, 100 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="TiltLeft" type="Button" parent="ButtonPanel" index="0"]
+[node name="TiltLeft" type="Button" parent="TrackAdder" index="0"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -47,7 +53,9 @@ margin_top = -40.0
 margin_right = -20.0
 margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -58,7 +66,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Up" type="Button" parent="ButtonPanel" index="1"]
+[node name="Up" type="Button" parent="TrackAdder" index="1"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -69,7 +77,9 @@ margin_top = -40.0
 margin_right = 10.0
 margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -80,7 +90,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="TiltRight" type="Button" parent="ButtonPanel" index="2"]
+[node name="TiltRight" type="Button" parent="TrackAdder" index="2"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -91,7 +101,9 @@ margin_top = -40.0
 margin_right = 40.0
 margin_bottom = -20.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -102,7 +114,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Left" type="Button" parent="ButtonPanel" index="3"]
+[node name="Left" type="Button" parent="TrackAdder" index="3"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -113,7 +125,9 @@ margin_top = -10.0
 margin_right = -20.0
 margin_bottom = 10.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -124,7 +138,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Foward" type="Button" parent="ButtonPanel" index="4"]
+[node name="Foward" type="Button" parent="TrackAdder" index="4"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -135,7 +149,9 @@ margin_top = -10.0
 margin_right = 10.0
 margin_bottom = 10.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -146,7 +162,7 @@ text = "F"
 flat = false
 align = 1
 
-[node name="Right" type="Button" parent="ButtonPanel" index="5"]
+[node name="Right" type="Button" parent="TrackAdder" index="5"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -157,7 +173,9 @@ margin_top = -10.0
 margin_right = 40.0
 margin_bottom = 10.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -168,7 +186,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="LongToggle" type="Button" parent="ButtonPanel" index="6"]
+[node name="LongToggle" type="Button" parent="TrackAdder" index="6"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -179,7 +197,9 @@ margin_top = 20.0
 margin_right = -20.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = true
@@ -190,7 +210,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Down" type="Button" parent="ButtonPanel" index="7"]
+[node name="Down" type="Button" parent="TrackAdder" index="7"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -201,7 +221,9 @@ margin_top = 20.0
 margin_right = 10.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -212,7 +234,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Delete" type="Button" parent="ButtonPanel" index="8"]
+[node name="Delete" type="Button" parent="TrackAdder" index="8"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -223,7 +245,9 @@ margin_top = 20.0
 margin_right = 40.0
 margin_bottom = 40.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -234,7 +258,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Tree" type="Tree" parent="." index="1"]
+[node name="Specials" type="Tree" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -244,12 +268,21 @@ margin_top = 128.0
 margin_bottom = -34.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+columns = 1
+allow_reselect = false
+allow_rmb_select = false
+hide_folding = false
+hide_root = false
+drop_mode_flags = 0
+select_mode = 0
 _sections_unfolded = [ "Margin" ]
 
-[node name="Button" type="Button" parent="." index="2"]
+[node name="AddSpecial" type="Button" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 1.0
@@ -258,7 +291,9 @@ anchor_bottom = 1.0
 margin_top = -30.0
 rect_min_size = Vector2( 0, 30 )
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 toggle_mode = false
@@ -270,7 +305,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="LineEdit" type="LineEdit" parent="." index="3"]
+[node name="CurrentTrack" type="LineEdit" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -278,14 +313,57 @@ anchor_right = 1.0
 anchor_bottom = 0.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
 mouse_filter = 0
+mouse_default_cursor_shape = 1
 size_flags_horizontal = 1
 size_flags_vertical = 1
 focus_mode = 2
+context_menu_enabled = true
 placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
-context_menu_enabled = true
+caret_position = 0
+script = ExtResource( 2 )
 _sections_unfolded = [ "Margin" ]
+
+[node name="TrackPaths" type="WindowDialog" parent="." index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 48.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = false
+window_title = "Track Scene Paths"
+resizable = true
+
+[node name="ErrorDialog" type="AcceptDialog" parent="." index="5"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 145.0
+margin_bottom = 58.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+popup_exclusive = true
+window_title = "Track Plugin Error!"
+resizable = false
+dialog_text = "An error as occured!"
+dialog_hide_on_ok = true
+_sections_unfolded = [ "Dialog" ]
 
 
