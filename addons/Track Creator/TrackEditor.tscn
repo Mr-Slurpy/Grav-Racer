@@ -1,9 +1,45 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://addons/Track Creator/track_editor.gd" type="Script" id=1]
-[ext_resource path="res://addons/Track Creator/EditCurrentTrack.gd" type="Script" id=2]
 
-[node name="Track Editor" type="Control"]
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends Panel
+
+func _ready():
+	var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+	var parent = get_parent()
+	$Up.connect(\"pressed\", parent, \"add_track\", [TrackType.UP])
+	$Down.connect(\"pressed\", parent, \"add_track\", [TrackType.DOWN])
+	$Left.connect(\"pressed\", parent, \"add_track\", [TrackType.LEFT])
+	$Right.connect(\"pressed\", parent, \"add_track\", [TrackType.RIGHT])
+	$TiltLeft.connect(\"pressed\", parent, \"add_track\", [TrackType.TILT_LEFT])
+	$TiltRight.connect(\"pressed\", parent, \"add_track\", [TrackType.TILT_RIGHT])
+	
+	$LongToggle.connect(\"pressed\", parent, \"long_toggle\")
+	$Delete.connect(\"pressed\", parent, \"delete\")"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "tool
+extends LineEdit
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = get_parent().set_current_track(new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
+[node name="Track Editor" type="Control" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -38,6 +74,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+script = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -324,7 +361,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
-script = ExtResource( 2 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Margin" ]
 
 [node name="TrackPaths" type="WindowDialog" parent="." index="4"]
