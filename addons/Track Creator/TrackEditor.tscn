@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://addons/Track Creator/track_editor.gd" type="Script" id=1]
 
@@ -24,6 +24,30 @@ func _revert():
 [sub_resource type="GDScript" id=2]
 
 script/source = "tool
+extends ItemList
+
+var connectors
+
+func _ready():
+	get_parent().connect(\"new_track\", self, \"update_list\")
+	connect(\"item_selected\", self, \"selected\")
+
+func update_list():
+	clear()
+	connectors = get_parent().get_connector_list()
+	if connectors == null:
+		return
+	for connector in connectors:
+		add_item(connector.get_name().right(9))
+	if connectors.size() != 0:
+		select(0)
+
+func selected(index):
+	get_parent().set_current_connector(int(get_item_text(index)))"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "tool
 extends Panel
 
 func _ready():
@@ -40,7 +64,7 @@ func _ready():
 	$LongToggle.connect(\"pressed\", parent, \"long_toggle\")
 	$Delete.connect(\"pressed\", parent, \"delete\")"
 
-[sub_resource type="GDScript" id=3]
+[sub_resource type="GDScript" id=4]
 
 script/source = "tool
 extends WindowDialog
@@ -48,6 +72,28 @@ extends WindowDialog
 func open():
 	popup_centered_ratio(0.6)
 	rect_size.y = 0"
+
+[sub_resource type="GDScript" id=5]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.FORWARD, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
 
 [node name="Track Editor" type="VBoxContainer" index="0"]
 
@@ -92,7 +138,7 @@ caret_position = 0
 script = SubResource( 1 )
 _sections_unfolded = [ "Margin" ]
 
-[node name="Connectors" type="Tree" parent="." index="1"]
+[node name="Connectors" type="ItemList" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -109,17 +155,17 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 3
-columns = 1
-allow_reselect = false
-allow_rmb_select = false
-hide_folding = false
-hide_root = false
-drop_mode_flags = 0
+items = [  ]
 select_mode = 0
+allow_rmb_select = true
+icon_mode = 1
+fixed_icon_size = Vector2( 0, 0 )
+script = SubResource( 2 )
 _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="TrackAdder" type="Panel" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -133,7 +179,7 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 2 )
+script = SubResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -449,8 +495,8 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 popup_exclusive = false
 window_title = "Track Scene Paths"
-resizable = true
-script = SubResource( 3 )
+resizable = false
+script = SubResource( 4 )
 
 [node name="Layout" type="GridContainer" parent="TrackPaths" index="1"]
 
@@ -513,6 +559,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 5 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="UpLabel" type="Label" parent="TrackPaths/Layout" index="2"]

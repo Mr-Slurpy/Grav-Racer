@@ -14,6 +14,10 @@ config/name="Grav Racer"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "Track Creator" )
+
 [importer_defaults]
 
 scene={

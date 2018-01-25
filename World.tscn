@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://tracks/straight.dae" type="PackedScene" id=1]
-[ext_resource path="res://tracks/curve_up.dae" type="PackedScene" id=2]
-[ext_resource path="res://hovercar/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://tracks/straight/straight.dae" type="PackedScene" id=1]
+[ext_resource path="res://hovercar/player/Player.tscn" type="PackedScene" id=2]
 
 [node name="World" type="Node" index="0"]
 
@@ -35,415 +34,131 @@ directional_shadow_max_distance = 200.0
 
 [node name="Track" type="Node" parent="." index="1"]
 
-editor/display_folded = true
-
 [node name="Straight" parent="Track" index="0" instance=ExtResource( 1 )]
 
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2 )
-
-[node name="Straight25" parent="Track" index="1" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 98 )
-
-[node name="Straight13" parent="Track" index="2" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 50 )
-
-[node name="Straight39" parent="Track" index="3" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 146 )
-
-[node name="Straight7" parent="Track" index="4" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 26 )
-
-[node name="Straight46" parent="Track" index="5" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 122 )
-
-[node name="Straight22" parent="Track" index="6" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 74 )
-
-[node name="Straight28" parent="Track" index="7" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 170 )
-
-[node name="Straight4" parent="Track" index="8" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 14 )
-
-[node name="Straight44" parent="Track" index="9" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 110 )
-
-[node name="Straight20" parent="Track" index="10" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 62 )
-
-[node name="Straight29" parent="Track" index="11" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 158 )
-
-[node name="Straight9" parent="Track" index="12" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 38 )
-
-[node name="Straight34" parent="Track" index="13" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 134 )
-
-[node name="Straight15" parent="Track" index="14" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 86 )
-
-[node name="Straight33" parent="Track" index="15" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 182 )
-
-[node name="Straight2" parent="Track" index="16" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 6 )
-
-[node name="Straight47" parent="Track" index="17" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 102 )
-
-[node name="Straight23" parent="Track" index="18" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 54 )
-
-[node name="Straight30" parent="Track" index="19" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 150 )
-
-[node name="Straight11" parent="Track" index="20" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 30 )
-
-[node name="Straight35" parent="Track" index="21" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 126 )
-
-[node name="Straight16" parent="Track" index="22" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 78 )
-
-[node name="Straight36" parent="Track" index="23" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 174 )
-
-[node name="Straight57" parent="Track" index="24" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 248 )
-
-[node name="Straight62" parent="Track" index="25" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 264 )
-
-[node name="Straight69" parent="Track" index="26" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 292 )
-
-[node name="Straight72" parent="Track" index="27" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 320 )
-
-[node name="Straight84" parent="Track" index="28" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 404 )
-
-[node name="Straight58" parent="Track" index="29" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 252 )
-
-[node name="Straight80" parent="Track" index="30" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 336 )
-
-[node name="Straight65" parent="Track" index="31" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 280 )
-
-[node name="Straight85" parent="Track" index="32" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 364 )
-
-[node name="Straight73" parent="Track" index="33" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 308 )
-
-[node name="Straight88" parent="Track" index="34" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 392 )
-
-[node name="Straight61" parent="Track" index="35" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 268 )
-
-[node name="Straight87" parent="Track" index="36" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 352 )
-
-[node name="Straight67" parent="Track" index="37" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 296 )
-
-[node name="Straight96" parent="Track" index="38" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 380 )
-
-[node name="Straight78" parent="Track" index="39" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 324 )
-
-[node name="Straight79" parent="Track" index="40" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 408 )
-
-[node name="Straight59" parent="Track" index="41" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 256 )
-
-[node name="Straight94" parent="Track" index="42" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 340 )
-
-[node name="Straight71" parent="Track" index="43" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 284 )
-
-[node name="Straight92" parent="Track" index="44" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 368 )
-
-[node name="Straight77" parent="Track" index="45" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 312 )
-
-[node name="Straight82" parent="Track" index="46" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 396 )
-
-[node name="Straight64" parent="Track" index="47" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 272 )
-
-[node name="Straight83" parent="Track" index="48" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 356 )
-
-[node name="Straight66" parent="Track" index="49" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 300 )
-
-[node name="Straight89" parent="Track" index="50" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 384 )
-
-[node name="Straight75" parent="Track" index="51" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 328 )
-
-[node name="Straight97" parent="Track" index="52" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 412 )
-
-[node name="Straight60" parent="Track" index="53" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 260 )
-
-[node name="Straight90" parent="Track" index="54" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 344 )
-
-[node name="Straight68" parent="Track" index="55" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 288 )
-
-[node name="Straight91" parent="Track" index="56" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 372 )
-
-[node name="Straight76" parent="Track" index="57" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 316 )
-
-[node name="Straight81" parent="Track" index="58" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 400 )
-
-[node name="Straight63" parent="Track" index="59" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 276 )
-
-[node name="Straight93" parent="Track" index="60" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 360 )
-
-[node name="Straight70" parent="Track" index="61" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 304 )
-
-[node name="Straight86" parent="Track" index="62" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 388 )
-
-[node name="Straight74" parent="Track" index="63" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 332 )
-
-[node name="Straight95" parent="Track" index="64" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 96, 416 )
-
-[node name="Straight5" parent="Track" index="65" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 18 )
-
-[node name="Straight42" parent="Track" index="66" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 114 )
-
-[node name="Straight18" parent="Track" index="67" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 66 )
-
-[node name="Straight41" parent="Track" index="68" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 162 )
-
-[node name="Straight8" parent="Track" index="69" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 42 )
-
-[node name="Straight43" parent="Track" index="70" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 138 )
-
-[node name="Straight19" parent="Track" index="71" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 90 )
-
-[node name="Straight31" parent="Track" index="72" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 186 )
-
-[node name="Straight40" parent="Track" index="73" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.137249, 0.990537, -5.99936e-09, 0.990537, -0.137249, -4.32977e-08, 0, 0.501813, 189.39 )
-
-[node name="Straight49" parent="Track" index="74" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.302554, 0.953132, -1.32251e-08, 0.953132, -0.302554, -4.16627e-08, 0, 1.65802, 192.807 )
-
-[node name="Straight50" parent="Track" index="75" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.400321, 0.916375, -1.74986e-08, 0.916375, -0.400321, -4.0056e-08, 0, 3.1323, 196.211 )
-
-[node name="Straight51" parent="Track" index="76" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.521693, 0.853133, -2.28039e-08, 0.853133, -0.521693, -3.72916e-08, 0, 5.04493, 199.373 )
-
-[node name="Straight52" parent="Track" index="77" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.686877, 0.726773, -3.00244e-08, 0.726773, -0.686877, -3.17683e-08, 0, 7.62406, 202.088 )
-
-[node name="Straight53" parent="Track" index="78" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.686877, 0.726773, -3.00244e-08, 0.726773, -0.686877, -3.17683e-08, 0, 10.352, 204.998 )
-
-[node name="Straight54" parent="Track" index="79" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.686877, 0.726773, -3.00244e-08, 0.726773, -0.686877, -3.17683e-08, 0, 12.9865, 207.794 )
-
-[node name="Straight55" parent="Track" index="80" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.686877, 0.726773, -3.00244e-08, 0.726773, -0.686877, -3.17683e-08, 0, 15.7112, 210.68 )
-
-[node name="Straight56" parent="Track" index="81" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0.686877, 0.726773, -3.00244e-08, 0.726773, -0.686877, -3.17683e-08, 0, 18.4423, 213.558 )
-
-[node name="Straight3" parent="Track" index="82" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 10 )
-
-[node name="Straight48" parent="Track" index="83" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 106 )
-
-[node name="Straight24" parent="Track" index="84" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 58 )
-
-[node name="Straight27" parent="Track" index="85" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 154 )
-
-[node name="Straight12" parent="Track" index="86" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 34 )
-
-[node name="Straight37" parent="Track" index="87" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 130 )
-
-[node name="Straight17" parent="Track" index="88" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 82 )
-
-[node name="Straight38" parent="Track" index="89" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 178 )
-
-[node name="Straight6" parent="Track" index="90" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 22 )
-
-[node name="Straight45" parent="Track" index="91" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 118 )
-
-[node name="Straight21" parent="Track" index="92" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 70 )
-
-[node name="Straight26" parent="Track" index="93" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 166 )
-
-[node name="Straight10" parent="Track" index="94" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 46 )
-
-[node name="Straight32" parent="Track" index="95" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 142 )
-
-[node name="Straight14" parent="Track" index="96" instance=ExtResource( 1 )]
-
-transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 94 )
-
-[node name="Curve Up" parent="Track" index="97" instance=ExtResource( 2 )]
-
-transform = Transform( -4.37114e-08, 0, 1, -0.722447, 0.691427, -3.15792e-08, -0.691427, -0.722447, -3.02232e-08, 0, 17.9269, 213.021 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Curve Up2" parent="Track" index="98" instance=ExtResource( 2 )]
+[node name="Straight2" type="Spatial" parent="Track" index="1" instance=ExtResource( 1 )]
 
-transform = Transform( 1.04158e-07, 6.31583e-08, -1, -0.722447, 0.691427, -3.15792e-08, 0.691427, 0.722447, 1.17646e-07, 0, 52.9269, 218.021 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 0, 0 )
 
-[node name="Curve Up3" parent="Track" index="99" instance=ExtResource( 2 )]
+[node name="Straight3" type="Spatial" parent="Track" index="2" instance=ExtResource( 1 )]
 
-transform = Transform( 1.04158e-07, 6.31583e-08, -1, -0.806374, -0.591406, -1.21342e-07, -0.591406, 0.806374, -1.06704e-08, 0, 86.9269, 213.021 )
-_sections_unfolded = [ "Transform" ]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0 )
+
+[node name="Straight4" type="Spatial" parent="Track" index="3" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 0, 0 )
+
+[node name="Straight5" type="Spatial" parent="Track" index="4" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0 )
+
+[node name="Straight6" type="Spatial" parent="Track" index="5" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 0, 0 )
+
+[node name="Straight7" type="Spatial" parent="Track" index="6" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 0, 0 )
+
+[node name="Straight8" type="Spatial" parent="Track" index="7" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 112, 0, 0 )
+
+[node name="Straight9" type="Spatial" parent="Track" index="8" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 0 )
+
+[node name="Straight10" type="Spatial" parent="Track" index="9" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 144, 0, 0 )
+
+[node name="Straight11" type="Spatial" parent="Track" index="10" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 160, 0, 0 )
+
+[node name="Straight12" type="Spatial" parent="Track" index="11" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 176, 0, 0 )
+
+[node name="Straight13" type="Spatial" parent="Track" index="12" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 0 )
+
+[node name="Straight14" type="Spatial" parent="Track" index="13" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 208, 0, 0 )
+
+[node name="Straight15" type="Spatial" parent="Track" index="14" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 224, 0, 0 )
+
+[node name="Straight16" type="Spatial" parent="Track" index="15" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 240, 0, 0 )
+
+[node name="Straight17" type="Spatial" parent="Track" index="16" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 256, 0, 0 )
+
+[node name="Straight18" type="Spatial" parent="Track" index="17" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 272, 0, 0 )
+
+[node name="Straight19" type="Spatial" parent="Track" index="18" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 288, 0, 0 )
+
+[node name="Straight20" type="Spatial" parent="Track" index="19" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 304, 0, 0 )
+
+[node name="Straight21" type="Spatial" parent="Track" index="20" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 320, 0, 0 )
+
+[node name="Straight22" type="Spatial" parent="Track" index="21" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 336, 0, 0 )
+
+[node name="Straight23" type="Spatial" parent="Track" index="22" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 352, 0, 0 )
+
+[node name="Straight24" type="Spatial" parent="Track" index="23" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 368, 0, 0 )
+
+[node name="Straight25" type="Spatial" parent="Track" index="24" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 384, 0, 0 )
+
+[node name="Straight26" type="Spatial" parent="Track" index="25" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 400, 0, 0 )
+
+[node name="Straight27" type="Spatial" parent="Track" index="26" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 416, 0, 0 )
+
+[node name="Straight28" type="Spatial" parent="Track" index="27" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 432, 0, 0 )
+
+[node name="Straight29" type="Spatial" parent="Track" index="28" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 448, 0, 0 )
+
+[node name="Straight30" type="Spatial" parent="Track" index="29" instance=ExtResource( 1 )]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 464, 0, 0 )
 
 [node name="Racers" type="Node" parent="." index="2"]
 
-[node name="Player" parent="Racers" index="0" instance=ExtResource( 3 )]
+[node name="Player" parent="Racers" index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 7 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 17, 0 )
+_sections_unfolded = [ "Transform" ]
 
 

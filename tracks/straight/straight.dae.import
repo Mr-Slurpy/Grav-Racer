@@ -2,11 +2,15 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/straight.dae-41a3addba29b3e9f2166c940ca0d54fb.scn"
+path="res://.import/straight.dae-77d277f6c217f316e65ccd400d2c9821.scn"
 
 [deps]
 
-source_md5="869db5e2f5d0019f1671059ad46921c9"
+source_file="res://tracks/straight/straight.dae"
+source_md5="20b843f9dd046370d417c2fb69ef8b58"
+
+dest_files=[ "res://.import/straight.dae-77d277f6c217f316e65ccd400d2c9821.scn" ]
+dest_md5="a5320885e9bb2fd6d89f64e27c0f0b39"
 
 [params]
 

@@ -1,11 +1,15 @@
 tool
-extends Node
+extends VBoxContainer
+
+signal new_track
 
 var scene
 var current_track
 var current_connector
 var track_scenes = {}
 var long = false
+
+#var increment = 1
 
 func _init():
 	for type in TrackType:
@@ -25,19 +29,41 @@ func set_current_track(path):
 	if track == scene:
 		error("Current track cannot be the root node!")
 		return false
-	#Update list of connectors if none exist return error!
+	
 	current_track = track
+	set_current_connector(1)
+	emit_signal("new_track")
 	return true
+
+func get_connector_list():
+	if current_track == null:
+		return null
+	var connectors = []
+	for node in current_track.get_children():
+		if node.get_name().begins_with("Connector"):
+			connectors.append(node)
+	return connectors
 
 func set_current_connector(position):
 	if current_track == null:
 		error("No currently selected track!")
 		return false
-	var connector = current_track.get_node("connector " + position)
+	var connector = current_track.get_node("Connector" + str(position))
 	if connector == null:
-		error("\"Connector " + str(position) + "\" doesn't exist!\nCheck track scene to make sure it exists!\nProper naming is \"Connector [index]\"")
+		error("\"Connector" + str(position) + "\" doesn't exist!\nCheck track scene to make sure it exists!\nProper naming is \"Connector[index]\"")
 		return false
 	current_connector = connector
+	return true
+
+func set_track_scene(type, path):
+	if path == "":
+		track_scenes[type] = null
+		return
+	var track_scene = load(path)
+	if track_scene == null or not track_scene is PackedScene:
+		error("Not a valid path!")
+		return false
+	track_scenes[type] = track_scene
 	return true
 
 func add_track_type(type):
@@ -67,8 +93,10 @@ func add_track(track):
 		error("No connector selected!")
 		return false
 	
+	#track.set_name(str(increment))
+	#increment += 1
 	track.global_transform = current_connector.global_transform
-	current_track.get_parent().add_child_below_node(track, current_track)
+	current_track.get_parent().add_child_below_node(current_track, track)
 	track.set_owner(scene)
 	
 	current_track = track
