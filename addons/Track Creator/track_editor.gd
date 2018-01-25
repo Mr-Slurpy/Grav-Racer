@@ -7,6 +7,10 @@ var current_connector
 var track_scenes = {}
 var long = false
 
+func _init():
+	for type in TrackType:
+		track_scenes[TrackType[type]] = null
+
 func _ready():
 	pass
 
@@ -31,7 +35,7 @@ func set_current_connector(position):
 		return false
 	var connector = current_track.get_node("connector " + position)
 	if connector == null:
-		error("\"Connector " + position + "\" doesn't exist!\nCheck track scene to make sure it exists!\nProper naming is \"Connector [index]\"")
+		error("\"Connector " + str(position) + "\" doesn't exist!\nCheck track scene to make sure it exists!\nProper naming is \"Connector [index]\"")
 		return false
 	current_connector = connector
 	return true
@@ -39,7 +43,7 @@ func set_current_connector(position):
 func add_track_type(type):
 	var track_scene = track_scenes[type]
 	if track_scene == null:
-		error("No scene for type \"" + type + "\"")
+		error("No scene for that type!")
 		return false
 	var track = track_scene.instance()
 	return add_track(track)

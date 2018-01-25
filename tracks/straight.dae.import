@@ -6,11 +6,7 @@ path="res://.import/straight.dae-41a3addba29b3e9f2166c940ca0d54fb.scn"
 
 [deps]
 
-source_file="res://tracks/straight.dae"
-source_md5="59120ebdf7761b14add541a578c480e7"
-
-dest_files=[ "res://.import/straight.dae-41a3addba29b3e9f2166c940ca0d54fb.scn" ]
-dest_md5="ee114a4f56ef2a349f622aa5c9347438"
+source_md5="869db5e2f5d0019f1671059ad46921c9"
 
 [params]
 

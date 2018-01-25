@@ -6,11 +6,7 @@ path="res://.import/curve_up.dae-7199fbf938915a8c1a8a9bb43af0c578.scn"
 
 [deps]
 
-source_file="res://tracks/curve_up.dae"
-source_md5="5d5d57dc9deca226c5411873edce2883"
-
-dest_files=[ "res://.import/curve_up.dae-7199fbf938915a8c1a8a9bb43af0c578.scn" ]
-dest_md5="3634889fb384f813dc11df1937e03d97"
+source_md5="836f2b50f6d941a23c493b91f868ea0c"
 
 [params]
 

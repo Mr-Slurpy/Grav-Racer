@@ -1,26 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/Track Creator/track_editor.gd" type="Script" id=1]
 
 [sub_resource type="GDScript" id=1]
-
-script/source = "tool
-extends Panel
-
-func _ready():
-	var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
-	var parent = get_parent()
-	$Up.connect(\"pressed\", parent, \"add_track\", [TrackType.UP])
-	$Down.connect(\"pressed\", parent, \"add_track\", [TrackType.DOWN])
-	$Left.connect(\"pressed\", parent, \"add_track\", [TrackType.LEFT])
-	$Right.connect(\"pressed\", parent, \"add_track\", [TrackType.RIGHT])
-	$TiltLeft.connect(\"pressed\", parent, \"add_track\", [TrackType.TILT_LEFT])
-	$TiltRight.connect(\"pressed\", parent, \"add_track\", [TrackType.TILT_RIGHT])
-	
-	$LongToggle.connect(\"pressed\", parent, \"long_toggle\")
-	$Delete.connect(\"pressed\", parent, \"delete\")"
-
-[sub_resource type="GDScript" id=2]
 
 script/source = "tool
 extends LineEdit
@@ -39,7 +21,35 @@ func _commit(new_text):
 func _revert():
 	text = last"
 
-[node name="Track Editor" type="Control" index="0"]
+[sub_resource type="GDScript" id=2]
+
+script/source = "tool
+extends Panel
+
+func _ready():
+	var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+	var parent = get_parent()
+	$Forward.connect(\"pressed\", parent, \"add_track_type\", [TrackType.FORWARD])
+	$Up.connect(\"pressed\", parent, \"add_track_type\", [TrackType.UP])
+	$Down.connect(\"pressed\", parent, \"add_track_type\", [TrackType.DOWN])
+	$Left.connect(\"pressed\", parent, \"add_track_type\", [TrackType.LEFT])
+	$Right.connect(\"pressed\", parent, \"add_track_type\", [TrackType.RIGHT])
+	$TiltLeft.connect(\"pressed\", parent, \"add_track_type\", [TrackType.TILT_LEFT])
+	$TiltRight.connect(\"pressed\", parent, \"add_track_type\", [TrackType.TILT_RIGHT])
+	
+	$LongToggle.connect(\"pressed\", parent, \"long_toggle\")
+	$Delete.connect(\"pressed\", parent, \"delete\")"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "tool
+extends WindowDialog
+
+func open():
+	popup_centered_ratio(0.6)
+	rect_size.y = 0"
+
+[node name="Track Editor" type="VBoxContainer" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -54,27 +64,76 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
+custom_constants/separation = 2
+alignment = 0
 script = ExtResource( 1 )
-_sections_unfolded = [ "Margin" ]
-__meta__ = {
-"_edit_lock_": true
-}
+_sections_unfolded = [ "Margin", "custom_constants" ]
 
-[node name="TrackAdder" type="Panel" parent="." index="0"]
+[node name="CurrentTrack" type="LineEdit" parent="." index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1020.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 1
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+script = SubResource( 1 )
+_sections_unfolded = [ "Margin" ]
+
+[node name="Connectors" type="Tree" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
 anchor_bottom = 0.0
 margin_top = 26.0
-margin_bottom = 126.0
+margin_right = 1020.0
+margin_bottom = 106.0
+rect_min_size = Vector2( 100, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+columns = 1
+allow_reselect = false
+allow_rmb_select = false
+hide_folding = false
+hide_root = false
+drop_mode_flags = 0
+select_mode = 0
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="TrackAdder" type="Panel" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 108.0
+margin_right = 1020.0
+margin_bottom = 208.0
 rect_min_size = Vector2( 100, 100 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-script = SubResource( 1 )
+script = SubResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -175,7 +234,7 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Foward" type="Button" parent="TrackAdder" index="4"]
+[node name="Forward" type="Button" parent="TrackAdder" index="4"]
 
 anchor_left = 0.5
 anchor_top = 0.5
@@ -295,21 +354,23 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="Specials" type="Tree" parent="." index="1"]
+[node name="Specials" type="Tree" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 128.0
-margin_bottom = -34.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 210.0
+margin_right = 1020.0
+margin_bottom = 531.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = true
 focus_mode = 2
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
 columns = 1
 allow_reselect = false
 allow_rmb_select = false
@@ -317,15 +378,17 @@ hide_folding = false
 hide_root = false
 drop_mode_flags = 0
 select_mode = 0
-_sections_unfolded = [ "Margin" ]
+_sections_unfolded = [ "Margin", "Size Flags" ]
 
-[node name="AddSpecial" type="Button" parent="." index="2"]
+[node name="AddSpecial" type="Button" parent="." index="4"]
 
 anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -30.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 533.0
+margin_right = 1020.0
+margin_bottom = 563.0
 rect_min_size = Vector2( 0, 30 )
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
@@ -342,37 +405,43 @@ flat = false
 align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="CurrentTrack" type="LineEdit" parent="." index="3"]
+[node name="OpenTrackPaths" type="Button" parent="." index="5"]
 
 anchor_left = 0.0
 anchor_top = 0.0
-anchor_right = 1.0
+anchor_right = 0.0
 anchor_bottom = 0.0
-margin_bottom = 24.0
+margin_top = 565.0
+margin_right = 1020.0
+margin_bottom = 595.0
+rect_min_size = Vector2( 0, 30 )
 rect_pivot_offset = Vector2( 0, 0 )
 focus_mode = 2
 mouse_filter = 0
-mouse_default_cursor_shape = 1
+mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-focus_mode = 2
-context_menu_enabled = true
-placeholder_alpha = 0.6
-caret_blink = false
-caret_blink_speed = 0.65
-caret_position = 0
-script = SubResource( 2 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "Open Track Paths"
+flat = false
+align = 1
 _sections_unfolded = [ "Margin" ]
 
-[node name="TrackPaths" type="WindowDialog" parent="." index="4"]
+[node name="TrackPaths" type="WindowDialog" parent="." index="6"]
 
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 48.0
-margin_bottom = 40.0
+margin_left = 292.0
+margin_top = 148.0
+margin_right = 692.0
+margin_bottom = 423.0
+rect_min_size = Vector2( 400, 275 )
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -381,16 +450,413 @@ size_flags_vertical = 1
 popup_exclusive = false
 window_title = "Track Scene Paths"
 resizable = true
+script = SubResource( 3 )
 
-[node name="ErrorDialog" type="AcceptDialog" parent="." index="5"]
+[node name="Layout" type="GridContainer" parent="TrackPaths" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/hseparation = 10
+columns = 2
+_sections_unfolded = [ "Margin", "custom_constants" ]
+
+[node name="ForwardLabel" type="Label" parent="TrackPaths/Layout" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 5.0
+margin_right = 60.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Forward:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="ForwardEdit" type="LineEdit" parent="TrackPaths/Layout" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_right = 360.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="UpLabel" type="Label" parent="TrackPaths/Layout" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 33.0
+margin_right = 60.0
+margin_bottom = 47.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Up:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="UpEdit" type="LineEdit" parent="TrackPaths/Layout" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 28.0
+margin_right = 360.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="DownLabel" type="Label" parent="TrackPaths/Layout" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 61.0
+margin_right = 60.0
+margin_bottom = 75.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Down:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="DownEdit" type="LineEdit" parent="TrackPaths/Layout" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 56.0
+margin_right = 360.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="LeftLabel" type="Label" parent="TrackPaths/Layout" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 89.0
+margin_right = 60.0
+margin_bottom = 103.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Left:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="LeftEdit" type="LineEdit" parent="TrackPaths/Layout" index="7"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 84.0
+margin_right = 360.0
+margin_bottom = 108.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="RightLabel" type="Label" parent="TrackPaths/Layout" index="8"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 117.0
+margin_right = 60.0
+margin_bottom = 131.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Right:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="RightEdit" type="LineEdit" parent="TrackPaths/Layout" index="9"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 112.0
+margin_right = 360.0
+margin_bottom = 136.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="TiltLeftLabel" type="Label" parent="TrackPaths/Layout" index="10"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 145.0
+margin_right = 60.0
+margin_bottom = 159.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Tilt Left:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TiltLeftEdit" type="LineEdit" parent="TrackPaths/Layout" index="11"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 140.0
+margin_right = 360.0
+margin_bottom = 164.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="TiltRightLabel" type="Label" parent="TrackPaths/Layout" index="12"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 173.0
+margin_right = 60.0
+margin_bottom = 187.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Tilt Right:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="TiltRightEdit" type="LineEdit" parent="TrackPaths/Layout" index="13"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 70.0
+margin_top = 168.0
+margin_right = 360.0
+margin_bottom = 192.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="SpecialBox" type="HBoxContainer" parent="TrackPaths" index="2"]
+
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -34.0
+margin_right = -20.0
+margin_bottom = -20.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 0
+_sections_unfolded = [ "Margin" ]
+
+[node name="SpecialLabel" type="Label" parent="TrackPaths/SpecialBox" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 5.0
+margin_right = 93.0
+margin_bottom = 19.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "Special Folder:"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="SpecialEdit" type="LineEdit" parent="TrackPaths/SpecialBox" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 97.0
+margin_right = 360.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
+size_flags_horizontal = 3
+size_flags_vertical = 1
+focus_mode = 2
+context_menu_enabled = true
+placeholder_alpha = 0.6
+caret_blink = false
+caret_blink_speed = 0.65
+caret_position = 0
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="ErrorDialog" type="AcceptDialog" parent="." index="7"]
 
 visible = false
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 145.0
-margin_bottom = 58.0
+margin_top = 538.0
+margin_right = 1020.0
+margin_bottom = 596.0
 rect_pivot_offset = Vector2( 0, 0 )
 mouse_filter = 0
 mouse_default_cursor_shape = 0
@@ -402,5 +868,7 @@ resizable = false
 dialog_text = "An error as occured!"
 dialog_hide_on_ok = true
 _sections_unfolded = [ "Dialog" ]
+
+[connection signal="pressed" from="OpenTrackPaths" to="TrackPaths" method="open"]
 
 
