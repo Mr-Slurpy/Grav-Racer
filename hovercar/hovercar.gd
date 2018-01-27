@@ -1,8 +1,10 @@
 extends KinematicBody
 
 const level = 4
-const grav_strength = 10
-const rot_strength = 10
+const grav_strength = 6
+const rot_strength = 8
+
+const speed = 20
 
 onready var front_left = $FrontLeft
 onready var front_right = $FrontRight
@@ -61,16 +63,39 @@ func _physics_process(delta):
 		
 		var height = global_transform.origin.distance_to(mean_collision) - level + 1
 		var local_velocity = global_transform.basis.xform_inv(linear_velocity)
-		local_velocity.x /= 1.2
+		local_velocity.x *=  1 - min(2 * delta, 1)
 		local_velocity.y = -height * grav_strength
 		linear_velocity = global_transform.basis.xform(local_velocity)
 	
 	linear_velocity = move_and_slide(linear_velocity, mean_normal)
+	linear_velocity *= 1 - (0.3 * delta)
 
 func turn(amount):
 	global_transform.basis = global_transform.basis.rotated(global_transform.basis.y.normalized(), amount)
 
 func move(vel):
 	var local_velocity = global_transform.basis.xform_inv(linear_velocity)
-	local_velocity += vel
+	local_velocity += vel * get_physics_process_delta_time()
 	linear_velocity = global_transform.basis.xform(local_velocity)
+
+func accelerate():
+	move(Vector3(0, 0, speed))
+
+func reverse():
+	move(Vector3(0, 0, -speed/3))
+
+func brake():
+	var length = linear_velocity.length()
+	var delta = get_physics_process_delta_time()
+	if length > speed * 1.2 * delta:
+		linear_velocity -= linear_velocity * (speed * 1.2 / length * delta)
+	else:
+		linear_velocity.x = 0
+		linear_velocity.y = 0
+		linear_velocity.z = 0
+
+func speed():
+	return linear_velocity.length()
+
+func moving_foward():
+	return global_transform.basis.z.dot(linear_velocity) >= 0.1

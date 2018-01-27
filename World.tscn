@@ -3,7 +3,7 @@
 [ext_resource path="res://tracks/straight/straight.dae" type="PackedScene" id=1]
 [ext_resource path="res://hovercar/player/Player.tscn" type="PackedScene" id=2]
 
-[node name="World" type="Node"]
+[node name="World" type="Node" index="0"]
 
 [node name="GlobalLight" type="DirectionalLight" parent="." index="0"]
 
@@ -165,6 +165,6 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 464, 0, 0 )
 
 [node name="Player" parent="Racers" index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 6, 5, 0 )
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 5, 0 )
 
 
