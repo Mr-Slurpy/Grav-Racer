@@ -1,10 +1,10 @@
 extends KinematicBody
 
 const level = 4
-const grav_strength = 6
-const rot_strength = 8
+const grav_strength = 10
+const rot_strength = 12
 
-const speed = 20
+const speed = 40
 
 onready var front_left = $FrontLeft
 onready var front_right = $FrontRight
@@ -86,9 +86,9 @@ func reverse():
 
 func brake():
 	var length = linear_velocity.length()
-	var delta = get_physics_process_delta_time()
-	if length > speed * 1.2 * delta:
-		linear_velocity -= linear_velocity * (speed * 1.2 / length * delta)
+	var subtract = speed * 1.2 * get_physics_process_delta_time()
+	if length > subtract:
+		linear_velocity -= linear_velocity * (subtract / length)
 	else:
 		linear_velocity.x = 0
 		linear_velocity.y = 0

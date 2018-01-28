@@ -2,26 +2,26 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/straight.dae-77d277f6c217f316e65ccd400d2c9821.scn"
+path="res://.import/right.dae-6df5cbb211c09a9eb8c50dfe985d4f5a.scn"
 
 [deps]
 
-source_file="res://tracks/straight/straight.dae"
-source_md5="60f2225ada78238453c483e99b59e6bf"
+source_file="res://tracks/right/right.dae"
+source_md5="d686551dce4e5a7562c0e79046a842bf"
 
-dest_files=[ "res://.import/straight.dae-77d277f6c217f316e65ccd400d2c9821.scn" ]
-dest_md5="a5320885e9bb2fd6d89f64e27c0f0b39"
+dest_files=[ "res://.import/right.dae-6df5cbb211c09a9eb8c50dfe985d4f5a.scn" ]
+dest_md5="f54988f68e2158f0e298af2ad642b064"
 
 [params]
 
 nodes/root_type="Spatial"
-nodes/root_name="Straight"
+nodes/root_name="Right"
 nodes/root_scale=1.0
 nodes/custom_script="res://addons/Track Creator/track_importer.gd"
 nodes/storage=0
-materials/location=0
+materials/location=1
 materials/storage=0
-materials/keep_on_reimport=false
+materials/keep_on_reimport=true
 meshes/compress=true
 meshes/ensure_tangents=true
 meshes/storage=0

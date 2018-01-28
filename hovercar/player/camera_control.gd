@@ -1,7 +1,7 @@
 extends Spatial
 
-const pan = 6
-const spring = 1.6
+const pan = 24
+const spring = 3.5
 const max_distort = 65
 
 onready var hovercar = get_node("../Hovercar")

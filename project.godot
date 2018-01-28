@@ -14,6 +14,10 @@ config/name="Grav Racer"
 run/main_scene="res://World.tscn"
 config/icon="res://icon.png"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "Track Creator" )
+
 [importer_defaults]
 
 scene={
@@ -1061,8 +1065,8 @@ scene={
 "meshes/light_baking": 0,
 "meshes/lightmap_texel_size": 0.1,
 "meshes/storage": 0,
-"nodes/custom_script": "",
-"nodes/root_name": "Scene Root",
+"nodes/custom_script": "res://addons/Track Creator/track_importer.gd",
+"nodes/root_name": "Down",
 "nodes/root_scale": 1.0,
 "nodes/root_type": "Spatial",
 "nodes/storage": 0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://addons/Track Creator/track_editor.gd" type="Script" id=1]
 
@@ -12,11 +12,14 @@ var last = \"\"
 func _ready():
 	connect(\"text_entered\", self, \"_commit\")
 	connect(\"focus_exited\", self, \"_revert\")
+	get_parent().connect(\"new_track\", self, \"_update_text\")
 
 func _commit(new_text):
-	var success = get_parent().set_current_track(new_text)
-	if success:
-		last = new_text
+	get_parent().set_current_track(new_text)
+
+func _update_text():
+	last = get_parent().get_current_track_path()
+	text = last
 
 func _revert():
 	text = last"
@@ -95,6 +98,138 @@ func _commit(new_text):
 func _revert():
 	text = last"
 
+[sub_resource type="GDScript" id=6]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.UP, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
+[sub_resource type="GDScript" id=7]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.DOWN, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
+[sub_resource type="GDScript" id=8]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.LEFT, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
+[sub_resource type="GDScript" id=9]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.RIGHT, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
+[sub_resource type="GDScript" id=10]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.TILT_LEFT, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
+[sub_resource type="GDScript" id=11]
+
+script/source = "tool
+extends LineEdit
+
+onready var editor = get_node(\"../../../\")
+onready var TrackType = load(\"res://addons/Track Creator/track_editor.gd\").TrackType
+
+var last = \"\"
+
+func _ready():
+	connect(\"text_entered\", self, \"_commit\")
+	connect(\"focus_exited\", self, \"_revert\")
+
+func _commit(new_text):
+	var success = editor.set_track_scene(TrackType.TILT_RIGHT, new_text)
+	if success:
+		last = new_text
+
+func _revert():
+	text = last"
+
 [node name="Track Editor" type="VBoxContainer" index="0"]
 
 anchor_left = 0.0
@@ -165,7 +300,6 @@ _sections_unfolded = [ "Rect", "Size Flags" ]
 
 [node name="TrackAdder" type="Panel" parent="." index="2"]
 
-editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -605,6 +739,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 6 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="DownLabel" type="Label" parent="TrackPaths/Layout" index="4"]
@@ -650,6 +785,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 7 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="LeftLabel" type="Label" parent="TrackPaths/Layout" index="6"]
@@ -695,6 +831,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 8 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="RightLabel" type="Label" parent="TrackPaths/Layout" index="8"]
@@ -740,6 +877,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 9 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="TiltLeftLabel" type="Label" parent="TrackPaths/Layout" index="10"]
@@ -785,6 +923,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 10 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="TiltRightLabel" type="Label" parent="TrackPaths/Layout" index="12"]
@@ -830,6 +969,7 @@ placeholder_alpha = 0.6
 caret_blink = false
 caret_blink_speed = 0.65
 caret_position = 0
+script = SubResource( 11 )
 _sections_unfolded = [ "Size Flags" ]
 
 [node name="SpecialBox" type="HBoxContainer" parent="TrackPaths" index="2"]

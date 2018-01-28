@@ -2,20 +2,20 @@
 
 importer="scene"
 type="PackedScene"
-path="res://.import/curve_up.dae-7199fbf938915a8c1a8a9bb43af0c578.scn"
+path="res://.import/up.dae-c77455ddcf91a13909db333dcfc5894b.scn"
 
 [deps]
 
-source_file="res://tracks/curve_up.dae"
-source_md5="836f2b50f6d941a23c493b91f868ea0c"
+source_file="res://tracks/up/up.dae"
+source_md5="4da653baa4e43a6ef10307eeef0ddde3"
 
-dest_files=[ "res://.import/curve_up.dae-7199fbf938915a8c1a8a9bb43af0c578.scn" ]
-dest_md5="3634889fb384f813dc11df1937e03d97"
+dest_files=[ "res://.import/up.dae-c77455ddcf91a13909db333dcfc5894b.scn" ]
+dest_md5="168dbd17312ffaaea27d7701503ce9ed"
 
 [params]
 
 nodes/root_type="Spatial"
-nodes/root_name="Curve Up"
+nodes/root_name="Up"
 nodes/root_scale=1.0
 nodes/custom_script="res://addons/Track Creator/track_importer.gd"
 nodes/storage=0

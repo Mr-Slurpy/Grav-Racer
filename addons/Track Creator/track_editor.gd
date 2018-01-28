@@ -12,8 +12,13 @@ var long = false
 #var increment = 1
 
 func _init():
+	var check_files = File.new()
+	var track_folder = "res://tracks/"
 	for type in TrackType:
-		track_scenes[TrackType[type]] = null
+		var lower = type.to_lower()
+		var type_folder = track_folder + lower + "/" + lower + ".dae"
+		if check_files.file_exists(type_folder):
+			track_scenes[TrackType[type]] = load(type_folder)
 
 func _ready():
 	pass
@@ -34,6 +39,11 @@ func set_current_track(path):
 	set_current_connector(1)
 	emit_signal("new_track")
 	return true
+
+func get_current_track_path():
+	if scene == null or current_track == null:
+		return ""
+	return str(scene.get_path_to(current_track))
 
 func get_connector_list():
 	if current_track == null:
@@ -99,8 +109,7 @@ func add_track(track):
 	current_track.get_parent().add_child_below_node(current_track, track)
 	track.set_owner(scene)
 	
-	current_track = track
-	set_current_connector(1)
+	set_current_track(track.get_path())
 	
 	return true
 
