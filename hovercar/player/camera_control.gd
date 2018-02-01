@@ -1,6 +1,6 @@
 extends Spatial
 
-const pan = 24
+const pan = 12
 const spring = 3.5
 const max_distort = 65
 
