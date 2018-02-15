@@ -1,19 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://hovercar/hovercar.gd" type="Script" id=1]
+[ext_resource path="res://hovercar/bubblecraft/BubbleCraft.tscn" type="PackedScene" id=2]
 
-[sub_resource type="CubeMesh" id=1]
+[sub_resource type="BoxShape" id=1]
 
-size = Vector3( 2, 2, 2 )
-subdivide_width = 0
-subdivide_height = 0
-subdivide_depth = 0
+extents = Vector3( 1.82496, 1.13143, 3.46871 )
 
-[sub_resource type="BoxShape" id=2]
-
-extents = Vector3( 1.98707, 1, 3.00092 )
-
-[node name="Hovercar" type="KinematicBody" index="0"]
+[node name="Hovercar" type="KinematicBody"]
 
 input_ray_pickable = true
 input_capture_on_drag = false
@@ -29,61 +23,49 @@ collision/safe_margin = 0.001
 script = ExtResource( 1 )
 _sections_unfolded = [ "Angular", "Axis Lock", "Linear", "Transform" ]
 
-[node name="Mesh" type="MeshInstance" parent="." index="0"]
+[node name="BubbleCraft" parent="." index="0" instance=ExtResource( 2 )]
 
-transform = Transform( 2, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0 )
-layers = 1
-material_override = null
-cast_shadow = 1
-extra_cull_margin = 0.0
-use_in_baked_light = false
-lod_min_distance = 0.0
-lod_min_hysteresis = 0.0
-lod_max_distance = 0.0
-lod_max_hysteresis = 0.0
-mesh = SubResource( 1 )
-skeleton = NodePath("..")
-material/0 = null
+transform = Transform( -0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Collider" type="CollisionShape" parent="." index="1"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 disabled = false
 
 [node name="FrontLeft" type="RayCast" parent="." index="2"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.95, 3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4477, -1.15741, -2.00287 )
 enabled = true
 exclude_parent = true
-cast_to = Vector3( 1, -7, 1 )
+cast_to = Vector3( -1, -7, -1 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
 [node name="FrontRight" type="RayCast" parent="." index="3"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.95, 3 )
-enabled = true
-exclude_parent = true
-cast_to = Vector3( -1, -7, 1 )
-collision_mask = 1
-_sections_unfolded = [ "Transform" ]
-
-[node name="BackLeft" type="RayCast" parent="." index="4"]
-
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -0.95, -3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4477, -1.15741, -2.00287 )
 enabled = true
 exclude_parent = true
 cast_to = Vector3( 1, -7, -1 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 
-[node name="BackRight" type="RayCast" parent="." index="5"]
+[node name="BackLeft" type="RayCast" parent="." index="4"]
 
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.95, -3 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4477, -1.15741, 2.36926 )
 enabled = true
 exclude_parent = true
-cast_to = Vector3( -1, -7, -1 )
+cast_to = Vector3( 1, -7, 1 )
+collision_mask = 1
+_sections_unfolded = [ "Transform" ]
+
+[node name="BackRight" type="RayCast" parent="." index="5"]
+
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4477, -1.15741, 2.36926 )
+enabled = true
+exclude_parent = true
+cast_to = Vector3( -1, -7, 1 )
 collision_mask = 1
 _sections_unfolded = [ "Transform" ]
 

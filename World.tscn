@@ -14,9 +14,10 @@
 [node name="GlobalLight" type="DirectionalLight" parent="." index="0"]
 
 transform = Transform( 0.266301, -0.89094, 0.367844, 0.522456, 0.45412, 0.721675, -0.810014, 0, 0.58641, -0.0157833, 26.9301, 0.0227261 )
+visible = false
 layers = 1
 light_color = Color( 1, 1, 1, 1 )
-light_energy = 1.0
+light_energy = 0.5
 light_indirect_energy = 1.0
 light_negative = false
 light_specular = 0.5
@@ -37,8 +38,11 @@ directional_shadow_normal_bias = 0.8
 directional_shadow_bias_split_scale = 0.25
 directional_shadow_depth_range = 0
 directional_shadow_max_distance = 200.0
+_sections_unfolded = [ "Light" ]
 
 [node name="Track" type="Node" parent="." index="1"]
+
+editor/display_folded = true
 
 [node name="Forward" parent="Track" index="0" instance=ExtResource( 1 )]
 
