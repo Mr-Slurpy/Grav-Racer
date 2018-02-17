@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/bubblecraft engine.wav-f3de07322f1396720bf5c66df9569045.sample"
+
+[deps]
+
+source_file="res://hovercar/bubblecraft/bubblecraft engine.wav"
+source_md5="844429c88564407d80c8257ed0e411fc"
+
+dest_files=[ "res://.import/bubblecraft engine.wav-f3de07322f1396720bf5c66df9569045.sample" ]
+dest_md5="9771b4e01838705b3a637e9508301bfe"
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=true
+compress/mode=0

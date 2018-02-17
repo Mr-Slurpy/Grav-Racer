@@ -9,14 +9,14 @@
 [ext_resource path="res://tracks/tilt_left/tilt_left.dae" type="PackedScene" id=7]
 [ext_resource path="res://hovercar/player/Player.tscn" type="PackedScene" id=8]
 
-[node name="World" type="Node" index="0"]
+[node name="World" type="Node"]
 
 [node name="GlobalLight" type="DirectionalLight" parent="." index="0"]
 
 transform = Transform( 0.266301, -0.89094, 0.367844, 0.522456, 0.45412, 0.721675, -0.810014, 0, 0.58641, -0.0157833, 26.9301, 0.0227261 )
 visible = false
 layers = 1
-light_color = Color( 1, 1, 1, 1 )
+light_color = Color( 0, 1, 1, 1 )
 light_energy = 0.5
 light_indirect_energy = 1.0
 light_negative = false
